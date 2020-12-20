@@ -1,26 +1,25 @@
 import React from 'react'
 
+import ContactDetails from './contactDetails'
+
 const Contact = () => {
+    const contactList = [
+        {href: 'mailto: ssrivastava@me.iitr.ac.in', icon: 'fas fa-envelope fa-2x', contact: 'ssrivastava@me.iitr.ac.in'},
+        {href: 'https://github.com/Sanditya2510', icon: 'fab fa-github-square fa-2x', contact: 'github.com/Sanditya2510'},
+        {href: 'https://www.linkedin.com/in/sanditya-srivastava-a7552b160/', icon: 'fab fa-linkedin fa-2x', contact: 'linkedin.com/in/sanditya-srivastava-a7552b160'},
+    ]
+
     return (
         <div style={{minWidth: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', padding: '5%', color: 'white'}}>
-            <div style={{display: 'flex-start', justifyContent: 'flex-start', alignItems: 'center'}}>
-                <a href="mailto: ssrivastava@me.iitr.ac.in">
-                    <i className="fas fa-envelope fa-2x" style={{margin: "1em"}}></i>
-                    ssrivastava@me.iitr.ac.in
-                </a> 
-            </div>
-            <div style={{display: 'flex-start', justifyContent: 'flex-start', alignItems: 'center'}}>
-                <a href="https://github.com/Sanditya2510">
-                    <i className="fab fa-github-square fa-2x" style={{margin: "1em"}}></i>
-                    github.com/Sanditya2510
-                </a>
-            </div>
-            <div style={{display: 'flex-start', justifyContent: 'flex-start', alignItems: 'center'}}>
-                <a href="https://www.linkedin.com/in/sanditya-srivastava-a7552b160/">
-                    <i className="fab fa-linkedin fa-2x" style={{margin: "1em", backgroundColor: "none !important"}}></i>
-                    linkedin.com/in/sanditya-srivastava-a7552b160
-                </a> 
-            </div>
+            {
+                contactList.map( contact => {
+                   return (
+                        <ContactDetails href={contact.href} icon={contact.icon}>
+                            {contact.contact}
+                        </ContactDetails>        
+                   )
+                })
+            }
         </div>
     )
 }

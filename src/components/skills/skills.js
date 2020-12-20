@@ -9,7 +9,47 @@ import {
 
 import SkillsDetails from './skillsDetails'
 
+const mapToDetails = obj => {
+    return (
+        obj.map( tech => {
+            return (
+                <SkillsDetails img={tech.img} width={tech.width} name={tech.name} marginLeft={tech.marginLeft} />
+            )
+        })
+    )
+}
+
 const Skills = () => {
+    const backend = [
+        {img: 'django', width: '70%', name: 'Django', marginLeft: '0%'},
+        {img: 'nodejs', width: '45%', name: 'NodeJs', marginLeft: '3%'},
+    ]
+
+    const frontend = [
+        {img: 'react', width: '100%', name: 'ReactJs', marginLeft: '0%'},
+        {img: 'redux', width: '95%', name: 'Redux', marginLeft: '3%'},
+        {img: 'mobx', width: '90%', name: 'MobX', marginLeft: '0%'},
+        {img: 'html', width: '89%', name: 'HTML', marginLeft: '3%'},
+        {img: 'css', width: '87%', name: 'CSS', marginLeft: '3%'},
+    ]
+
+    const db = [
+        {img: 'postgres', width: '50%', name: 'PostgreSQL', marginLeft: '0%'},
+        {img: 'mongo', width: '53%', name: 'MongoDB', marginLeft: '0%'},
+        {img: 'redis', width: '60%', name: 'Redis', marginLeft: '3%'},
+    ]
+    
+    const lang = [
+        {img: 'cpp', width: '48%', name: 'C++', marginLeft: '3%'},
+        {img: 'py', width: '53%', name: 'Python', marginLeft: '3%'},
+        {img: 'js', width: '53%', name: 'Javascript', marginLeft: '0%'},
+    ]
+    
+    const others = [
+        {img: 'circle', width: '80%', name: 'Circle CI', marginLeft: '0%'},
+        {img: 'celery', width: '80%', name: 'Celery', marginLeft: '0%'},
+    ]
+
     return (
         <div className="h4-responsive">
             <MDBContainer className="mt-5 text-left">
@@ -22,8 +62,9 @@ const Skills = () => {
                             <hr className="my-2 white" />
                             <div className="container">
                                 <div className="row">
-                                    <SkillsDetails img='django' width='70%' name='Django' marginLeft='0%' />
-                                    <SkillsDetails img='nodejs' width='45%' name='NodeJs' marginLeft='3%' />
+                                    {
+                                        mapToDetails(backend)
+                                    }
                                 </div>
                             </div>
                         </MDBJumbotron>
@@ -40,11 +81,9 @@ const Skills = () => {
                             <hr className="my-2 white" />
                             <div className="container">
                                 <div className="row">
-                                    <SkillsDetails img='react' width='100%' name='ReactJs' marginLeft='0%' />
-                                    <SkillsDetails img='redux' width='95%' name='Redux' marginLeft='3%' />
-                                    <SkillsDetails img='mobx' width='90%' name='MobX' marginLeft='0%' />
-                                    <SkillsDetails img='html' width='89%' name='HTML' marginLeft='3%' />
-                                    <SkillsDetails img='css' width='87%' name='CSS' marginLeft='3%' />
+                                    {
+                                        mapToDetails(frontend)
+                                    }
                                 </div>
                             </div>
                         </MDBJumbotron>
@@ -62,12 +101,9 @@ const Skills = () => {
                             <hr className="my-2 white" />
                             <div className="container">
                                 <div className="row">
-                                    <SkillsDetails img='postgres' width='50%' name='PostgreSQL' marginLeft='0%' />
-                                    <div className="col-md  " style={{textAlign: 'center'}}>
-                                        <img src='img/mongo.png' style={{width: '53%', marginLeft: '0%'}} />
-                                        <p style={{marginTop: '0%'}}>MongoDB</p>
-                                    </div>
-                                    <SkillsDetails img='redis' width='60%' name='Redis' marginLeft='3%' />
+                                    {
+                                        mapToDetails(db)
+                                    }
                                 </div>
                             </div>
                         </MDBJumbotron>
@@ -84,9 +120,9 @@ const Skills = () => {
                             <hr className="my-2 white" />
                             <div className="container">
                                 <div className="row">
-                                    <SkillsDetails img='cpp' width='48%' name='C++' marginLeft='3%' />
-                                    <SkillsDetails img='py' width='53%' name='Python' marginLeft='3%' />
-                                    <SkillsDetails img='js' width='53%' name='Javascript' marginLeft='0%' />
+                                    {
+                                        mapToDetails(lang)
+                                    }
                                 </div>
                             </div>
                         </MDBJumbotron>
@@ -107,8 +143,9 @@ const Skills = () => {
                                         <img src='img/docker.png' style={{width: '80%', marginLeft: '0%', marginBottom: '14%'}} />
                                         <p style={{marginTop: '0%'}}>Docker</p>
                                     </div>
-                                    <SkillsDetails img='circle' width='80%' name='Circle CI' marginLeft='0%' />
-                                    <SkillsDetails img='celery' width='80%' name='Celery' marginLeft='0%' />
+                                    {
+                                        mapToDetails(others)
+                                    }
                                 </div>
                             </div>
                         </MDBJumbotron>

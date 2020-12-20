@@ -18,20 +18,30 @@ import './animation.css'
 
 function AnimationApp(){
   const location = useLocation()
+  const routes = [
+    {path: '/', component: About, exact: true},
+    {path: '/awards', component: Awards, exact: false},
+    {path: '/contact', component: Contact, exact: false},
+    {path: '/hobbies', component: Hobbies, exact: false},
+    {path: '/education', component: Education, exact: false},
+    // {path: '/projects', component: Project, exact: true},
+    {path: '/skills', component: Skills, exact: false},
+    {path: '/work', component: Work, exact: false},
+  ]
+
   return (
       <div>
         <TransitionGroup>
           <CSSTransition key={location.key} classNames="fade" timeout={3000}>
             <BrowserRouter>
               <Switch location={location}>
-                <Route exact path="/" component={About} />
-                <Route path="/awards" component={Awards} />
-                <Route path="/contact" component={Contact} />
-                <Route path="/education" component={Education} />
-                <Route path="/hobbies" component={Hobbies} />
-                <Route path="/projects" component={Project} />
-                <Route path="/skills" component={Skills} />
-                <Route path="/work" component={Work} />
+                {
+                  routes.map( route => {
+                    return (
+                      <Route path={route.path} component={route.component} exact={route.exact} />
+                    )
+                  })
+                }
                 <Route component={Error} />
               </Switch>
             </BrowserRouter>

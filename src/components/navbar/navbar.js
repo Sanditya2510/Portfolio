@@ -6,14 +6,13 @@ import {
     MDBNavbar,
     MDBNavbarBrand,
     MDBNavbarNav,
-    MDBNavItem,
-    MDBNavLink,
     MDBNavbarToggler,
-    MDBCollapse
+    MDBCollapse,
 } from "mdbreact";
 
 import toggleNavbar from '../../actions/navbar'
 import './navbar.css'
+import NavLink from './navlink'
 
 class Navbar extends Component {
     toggleCollapse = () => {
@@ -21,6 +20,16 @@ class Navbar extends Component {
     }
 
     render(){
+        const navtabs = [
+            {url: '/', name: 'About', exact: true},
+            {url: '/education', name: 'Education', exact: false},
+            {url: '/skills', name: 'Skills', exact: false},
+            {url: '/work', name: 'Work Experience', exact: false},
+            {url: '/awards', name: 'Awards', exact: false},
+            {url: '/hobbies', name: 'Hobbies', exact: false},
+            {url: '/contact', name: 'Contact', exact: false}
+        ]
+
         return ( 
         <nav>
             <MDBNavbar className="h4-responsive" color = "dark-blue" dark expand = "md">
@@ -30,34 +39,13 @@ class Navbar extends Component {
                 <MDBNavbarToggler onClick = { this.toggleCollapse }/> 
                 <MDBCollapse id = "navbarCollapse3" isOpen = { this.props.isOpen } navbar >
                     <MDBNavbarNav left style={{color: 'white'}}>
-                        <MDBNavItem>
-                            <MDBNavLink exact to = "/" activeClassName="navbar__link--active"
-                            className="navbar__link"> About < /MDBNavLink> 
-                        </MDBNavItem> 
-                        <MDBNavItem >
-                            <MDBNavLink to = "/education" activeClassName="navbar__link--active"
-                            className="navbar__link"> Education < /MDBNavLink> 
-                        </MDBNavItem> 
-                        <MDBNavItem >
-                            <MDBNavLink to = "/skills" activeClassName="navbar__link--active"
-                            className="navbar__link"> Skills < /MDBNavLink> 
-                        </MDBNavItem> 
-                        <MDBNavItem >
-                            <MDBNavLink to = "/work" activeClassName="navbar__link--active"
-                            className="navbar__link"> Work Experience < /MDBNavLink> 
-                        </MDBNavItem> 
-                        <MDBNavItem >
-                            <MDBNavLink to = "/awards" activeClassName="navbar__link--active"
-                            className="navbar__link"> Awards < /MDBNavLink> 
-                        </MDBNavItem> 
-                        <MDBNavItem >
-                            <MDBNavLink to = "/hobbies" activeClassName="navbar__link--active"
-                            className="navbar__link"> Hobbies </MDBNavLink> 
-                        </MDBNavItem> 
-                        <MDBNavItem >
-                            <MDBNavLink to = "/contact" activeClassName="navbar__link--active"
-                            className="navbar__link"> Contact </MDBNavLink> 
-                        </MDBNavItem> 
+                        {
+                            navtabs.map( tab => {
+                                return (
+                                    <NavLink url={tab.url} name={tab.name} exact={tab.exact} />
+                                )
+                            })
+                        }
                     </MDBNavbarNav> 
                 </MDBCollapse> 
             </MDBNavbar> 

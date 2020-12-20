@@ -1,52 +1,28 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
+import HobbiesDetail from './hobbiesDetail'
 
-const Hobbies = () => {
+const Hobbies = props => {
+    const { hobbiesList } = props
     return (
         <div className="container" style={{display:'flex', alignContent: 'center', flexWrap: 'wrap'}}>
-            <MDBCol style={{padding: '0', marginBottom: '10%'}}>
-                <MDBCard style={{ width: "25rem", height:"30rem", margin: '0px'}}>
-                    <MDBCardImage className="img-fluid" src="img/chess.jpeg" waves style={{width: '100%'}}/>
-                    <MDBCardBody>
-                    <MDBCardTitle className="h2-responsive">Chess</MDBCardTitle>
-                    <MDBCardText>
-                        <ul className="h4-responsive">
-                            <li>
-                                2000 rated player on Lichess.
-                            </li>
-                            <li>
-                                Won Gold medals at Inter University Chess tournaments
-                            </li>
-                            <li>
-                                Big Fan of Bobby Fischer. 
-                            </li>
-                        </ul> 
-                    </MDBCardText>
-                    </MDBCardBody>
-                </MDBCard>
-            </MDBCol>
-
-            <MDBCol style={{padding: '0'}}>
-                <MDBCard style={{ width: "25rem", height:"30rem", margin: '0px !important'}}>
-                    <MDBCardImage className="img-fluid" src="img/f1.jpg" waves />
-                    <MDBCardBody>
-                    <MDBCardTitle className="h2-responsive">Formula 1</MDBCardTitle>
-                    <MDBCardText>
-                        <ul className="h4-responsive">
-                            <li>
-                                Ardent follower of George Russell. 
-                            </li>
-                            <li>
-                                F1 League racer on PS4.
-                            </li>
-                        </ul>
-                    </MDBCardText>
-                    </MDBCardBody>
-                </MDBCard>
-            </MDBCol>
+            {
+                hobbiesList && hobbiesList.map( hobby => {
+                    return (
+                        <HobbiesDetail src={ hobby.src } name={ hobby.name } description={ hobby.description } /> 
+                    )
+                })
+            }
         </div>
     )
 }
 
-export default Hobbies
+
+const mapStateToProps = (state) => {
+    return {
+        hobbiesList: state.hobbies.hobbiesList
+    }
+}
+
+export default connect(mapStateToProps)(Hobbies)
