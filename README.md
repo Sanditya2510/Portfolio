@@ -1,4 +1,4 @@
-##I dont at all intend to remove inline css ;)
+## I dont at all intend to remove inline css ;)
 
 # Getting Started with Create React App
 
