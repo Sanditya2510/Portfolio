@@ -1,0 +1,15 @@
+.navbar__link {
+  color: white !important;
+}
+
+.navbar__link:hover {
+  transform: translateY(-2px);
+  color: white !important;
+}
+
+.navbar__link--active {
+  border-bottom: rgb(98, 0, 234) 3px solid;
+  font-weight: 600;
+  color: white !important;
+  transition: border-bottom 1s ease-in-out;
+}
